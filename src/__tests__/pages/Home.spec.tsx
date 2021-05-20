@@ -133,15 +133,15 @@ describe('Home', () => {
 
     screen.getByText('Como utilizar Hooks');
     screen.getByText('Pensando em sincronização em vez de ciclos de vida');
-    screen.getByText('15 mar 2021');
-    screen.getByText('Joseph Oliveira');
+    screen.getByText('20 de maio de 2021');
+    screen.getByText('Guilhermo González');
 
     screen.getByText('Criando um app CRA do zero');
     screen.getByText(
       'Tudo sobre como criar a sua primeira aplicação utilizando Create React App'
     );
-    screen.getByText('15 mar 2021');
-    screen.getByText('Danilo Vieira');
+    screen.getByText('20 de maio de 2021');
+    screen.getByText('Guilhermo González');
   });
 
   it('should be able to navigate to post page after a click', () => {
