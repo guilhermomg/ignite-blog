@@ -3,6 +3,8 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Prismic from '@prismicio/client';
 
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import PostSummary from '../components/PostSummary';
 
 import { getPrismicClient } from '../services/prismic';
@@ -67,12 +69,11 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
               uid={post.uid}
               title={post.data.title}
               subtitle={post.data.subtitle}
-              date={new Date(post.first_publication_date).toLocaleDateString(
-                'pt-BR',
+              date={format(
+                new Date(post.first_publication_date),
+                'dd MMM yyyy',
                 {
-                  day: '2-digit',
-                  month: 'long',
-                  year: 'numeric',
+                  locale: ptBR,
                 }
               )}
               author={post.data.author}
@@ -101,7 +102,7 @@ export const getStaticProps: GetStaticProps = async () => {
     [Prismic.predicates.at('document.type', 'post')],
     {
       fetch: ['post.title', 'post.content', 'post.subtitle', 'post.author'],
-      pageSize: 1,
+      pageSize: 20,
     }
   );
 
